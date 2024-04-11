@@ -2,7 +2,7 @@ let express = require("express");
 let app = express();
 const Port = 3000;
 var bodyParser = require('body-parser');
-
+require("dotenv").config();
 
 app.use(bodyParser.json())//request.body
 
@@ -28,11 +28,11 @@ app.use("/menu", menuRout);
 
 
 
+const PORT = process.env.PORT||3000;
 
 
 
-
-app.listen(Port, () => console.log("app is listiong"))
+app.listen(PORT, () => console.log("app is listiong"))
 
 
 
