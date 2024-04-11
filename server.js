@@ -1,7 +1,8 @@
 let express = require("express");
 let app = express();
-let port = 3000;
-var bodyParser = require('body-parser')
+const Port = 3000;
+var bodyParser = require('body-parser');
+
 
 app.use(bodyParser.json())//request.body
 
@@ -12,6 +13,27 @@ const menu = require("./models/menu");
 app.get("/", function (req, res) {
     res.send("How can I help you")
 });
+
+
+
+
+
+
+const personRout = require("./routs/personRout")
+const menuRout = require("./routs/menuRout")
+
+// use the router
+app.use("/person", personRout);
+app.use("/menu", menuRout);
+
+
+
+
+
+
+
+app.listen(Port, () => console.log("app is listiong"))
+
 
 
 /*app.post("/person", async (req, res) => {
@@ -32,26 +54,6 @@ app.get("/", function (req, res) {
     }
 
 })*/
-
-
-
-
-const  personRout = require("./routs/personRout")
-const  menuRout =require("./routs/menuRout")
-
-// use the router
-app.use("/person",personRout);
-app.use("/menu",menuRout);
-
-
-
-
-
- 
-
-app.listen(port, () => console.log("app is listiong"))
-
-
 
 /*
 app.get("/chiken",  function(req,res){

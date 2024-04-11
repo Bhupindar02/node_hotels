@@ -1,9 +1,11 @@
 const mongoose = require("mongoose");
 
 //define mongoDb connection URl
-const mongoURL = "mongodb://127.0.0.1:27017/Hotel"
+//  const mongoURL = "mongodb://127.0.0.1:27017/Hotel"                 //for local db
+const mongoURL = "mongodb+srv://bhupindar02:9VghDI6kHHw69wyd@cloudhotl.1ahjaao.mongodb.net/";
+
 //establishing connections
-mongoose.connect(mongoURL,{
+mongoose.connect(mongoURL, {
     useNewUrlParser: true,
     useUnifiedTopology: true
 })
@@ -13,20 +15,20 @@ mongoose.connect(mongoURL,{
 const db = mongoose.connection;  //with this obj you can handel events and intract with database
 
 //add event listners
-db.on('connected',()=>{
+db.on('connected', () => {
     console.log("connections has established")
 })
 
-db.on('disconnected',()=>{
+db.on('disconnected', () => {
     console.log("dis-connected")
 })
 
-db.on('error',(error)=>{
-    console.log("connection Error:",error)
+db.on('error', (error) => {
+    console.log("connection Error:", error)
 })
 
 
 //exports db
-module.exports ={
+module.exports = {
     db
 }
